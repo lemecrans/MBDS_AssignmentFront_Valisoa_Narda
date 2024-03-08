@@ -43,7 +43,7 @@ export class EditAssignmentComponent implements OnInit {
       this.assignment = assignment;
       // on met à jour les champs du formulaire
       if (assignment !== undefined) {
-        this.nomAssignment = assignment.nom;
+        this.nomAssignment = assignment.titre;
         this.dateDeRendu = assignment.dateDeRendu;
       }
     });
@@ -54,7 +54,8 @@ export class EditAssignmentComponent implements OnInit {
     if (this.nomAssignment == '' || this.dateDeRendu === undefined) return;
 
     // on récupère les valeurs dans le formulaire
-    this.assignment.nom = this.nomAssignment;
+    
+    this.assignment.titre = this.nomAssignment;
     this.assignment.dateDeRendu = this.dateDeRendu;
     this.assignmentsService
       .updateAssignment(this.assignment)

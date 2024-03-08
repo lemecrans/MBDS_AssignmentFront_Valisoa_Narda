@@ -39,10 +39,10 @@ export class AddAssignmentComponent {
     let nouvelAssignment = new Assignment();
     // on genere un id aléatoire (plus tard ce sera fait coté serveur par
     // une base de données)
-    nouvelAssignment.nom = this.nomAssignment;
+    nouvelAssignment.titre = this.nomAssignment;
     nouvelAssignment.dateDeRendu = this.dateDeRendu;
     nouvelAssignment.rendu = false;
-
+    //?>>>>>>>Les autres attributs a configurer<<<<<<<<<<<<<<<<<<<<
     // on utilise le service pour directement ajouter
     // le nouvel assignment dans le tableau
     this.assignmentsService

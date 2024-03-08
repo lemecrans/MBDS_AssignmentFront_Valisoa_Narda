@@ -17,8 +17,7 @@ export class AssignmentsService {
   constructor(private logService:LoggingService,
               private http:HttpClient) { }
 
-  //uri = 'http://localhost:8010/api/assignments';
-  uri = "https://angularmbdsmadagascar2024.onrender.com/api/assignments";
+  uri = 'http://localhost:8010/api/assignments';
 
   // retourne tous les assignments
   getAssignments():Observable<Assignment[]> {
@@ -65,7 +64,7 @@ export class AssignmentsService {
   // ajoute un assignment et retourne une confirmation
   addAssignment(assignment:Assignment):Observable<any> {
     //this.assignments.push(assignment);
-    this.logService.log(assignment.nom, "ajouté");
+    this.logService.log(assignment.titre, "ajouté");
     //return of("Assignment ajouté avec succès");
     return this.http.post<Assignment>(this.uri, assignment);
   }
@@ -74,7 +73,7 @@ export class AssignmentsService {
    // l'assignment passé en paramètre est le même objet que dans le tableau
    // plus tard on verra comment faire avec une base de données
    // il faudra faire une requête HTTP pour envoyer l'objet modifié
-    this.logService.log(assignment.nom, "modifié");
+    this.logService.log(assignment.titre, "modifié");
     //return of("Assignment modifié avec succès");
     return this.http.put<Assignment>(this.uri, assignment);
   }
@@ -83,7 +82,7 @@ export class AssignmentsService {
     // on va supprimer l'assignment dans le tableau
     //let pos = this.assignments.indexOf(assignment);
     //this.assignments.splice(pos, 1);
-    this.logService.log(assignment.nom, "supprimé");
+    this.logService.log(assignment.titre, "supprimé");
     //return of("Assignment supprimé avec succès");
     return this.http.delete(this.uri + "/" + assignment._id);
   }
@@ -94,13 +93,24 @@ export class AssignmentsService {
     // de données
     bdInitialAssignments.forEach(a => {
       let nouvelAssignment = new Assignment();
-      nouvelAssignment.nom = a.nom;
+      nouvelAssignment.titre = a.titre;
       nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
       nouvelAssignment.rendu = a.rendu;
+      nouvelAssignment.auteur = a.auteur;
+      nouvelAssignment.matiere = a.matiere;
+      nouvelAssignment.auteur.email = a.auteur.email;
+      nouvelAssignment.auteur.nom = a.auteur.nom;
+      nouvelAssignment.auteur.photo  = a.auteur.photo;
+      nouvelAssignment.matiere.prof.email = a.matiere.prof.email;
+      nouvelAssignment.matiere.prof.nom = a.matiere.prof.nom;
+      nouvelAssignment.matiere.prof.photo = a.matiere.prof.photo;
+      nouvelAssignment.matiere.titre = a.matiere.titre;
+      nouvelAssignment.note = a.note;
+      nouvelAssignment.remarques  = a.remarques;
 
       this.addAssignment(nouvelAssignment)
       .subscribe(() => {
-        console.log("Assignment " + a.nom + " ajouté");
+        console.log("Assignment " + a.titre + " ajouté");
       });
     });
   }
@@ -109,10 +119,22 @@ export class AssignmentsService {
     let appelsVersAddAssignment:Observable<any>[] = [];
 
     bdInitialAssignments.forEach(a => {
-      const nouvelAssignment = new Assignment();
-      nouvelAssignment.nom = a.nom;
+      let nouvelAssignment = new Assignment();
+      nouvelAssignment.titre = a.titre;
       nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
       nouvelAssignment.rendu = a.rendu;
+      nouvelAssignment.auteur = a.auteur;
+      nouvelAssignment.matiere  = a.matiere;
+      nouvelAssignment.matiere.prof  = a.matiere.prof;
+      nouvelAssignment.auteur.email = a.auteur.email;
+      nouvelAssignment.auteur.nom = a.auteur.nom;
+      nouvelAssignment.auteur.photo  = a.auteur.photo;
+      nouvelAssignment.matiere.prof.email = a.matiere.prof.email;
+      nouvelAssignment.matiere.prof.nom = a.matiere.prof.nom;
+      nouvelAssignment.matiere.prof.photo = a.matiere.prof.photo;
+      nouvelAssignment.matiere.titre = a.matiere.titre;
+      nouvelAssignment.note = a.note;
+      nouvelAssignment.remarques  = a.remarques;
 
       appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment))
     });

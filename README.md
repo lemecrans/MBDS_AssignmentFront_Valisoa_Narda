@@ -1,2 +1,3 @@
-# MBDS_AssignmentFront_Valisoa_Narda
-Application Assignment Collaboration Valisoa &amp; Narda
+# AssignmentApp
+
+Projet front-end pour les étudiants du Master MIAGE MBDS de Madagascar

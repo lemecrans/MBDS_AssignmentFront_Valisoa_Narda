@@ -5,8 +5,10 @@
 </h1>
 <mat-slide-toggle (click)="login()" color="primary">Login</mat-slide-toggle>
 <button mat-button (click)="genererDonneesDeTest()">Peupler BD</button>
+<body>
+  <app-sidenav [page_title]="title"></app-sidenav>
+</body>
 
-<router-outlet></router-outlet>
 <!--
 <app-assignments></app-assignments>
 -->

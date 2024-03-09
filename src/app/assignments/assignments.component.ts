@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTable, MatTableModule } from '@angular/material/table';
+//import {MatSidenavModule} from '@angular/material/sidenav';
 import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
 
 import { RenduDirective } from '../shared/rendu.directive';
@@ -36,6 +37,7 @@ import { filter, map, pairwise, tap, throttleTime } from 'rxjs/operators';
     MatPaginatorModule,
     MatListModule,
     MatSliderModule,
+    //MatSidenavModule,//sidenav
     RenduDirective,
     AssignmentDetailComponent,
     AddAssignmentComponent,

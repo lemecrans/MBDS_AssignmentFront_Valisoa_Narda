@@ -1,0 +1,14 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 20px auto;
+    border: 5px solid rgb(190, 180, 176);
+    padding: 50px;
+    border-radius: 5%;
+  
+    mat-form-field {
+      margin-bottom: 16px;
+    }
+    
+  }

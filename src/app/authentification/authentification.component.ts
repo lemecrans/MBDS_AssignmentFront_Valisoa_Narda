@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -15,8 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatButtonModule,
-
+    MatButtonModule
   ],
   templateUrl: './authentification.component.html',
   styleUrl: './authentification.component.css'
@@ -35,6 +34,8 @@ export class AuthentificationComponent {
         .subscribe((reponse) => {
           console.log(reponse);
           localStorage.setItem('token', reponse.token);
+          localStorage.setItem('ID', reponse.userId);
+          localStorage.setItem('pseudo', this.pseudo);
           this.router.navigate(['/home']);
         }, error => {
           this.router.navigate(['/erreur']);

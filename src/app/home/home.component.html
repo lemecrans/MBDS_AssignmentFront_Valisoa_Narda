@@ -1,1 +1,23 @@
-<p>home works!</p>
+<div>
+    <h1>Liste des Assignments</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Matière</th>
+          <th>Auteur</th>
+          <th>Date de Rendu</th>
+          <th>Rendu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let assignment of myAssignments">
+          <td>{{ assignment.titre }}</td>
+          <td>{{ assignment.matiere.titre }}</td>
+          <td>{{ assignment.matiere.prof.nom }}</td>
+          <td>{{ assignment.dateDeRendu | date:'mediumDate' }}</td>
+          <td>{{ assignment.rendu ? 'Oui' : 'Non' }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

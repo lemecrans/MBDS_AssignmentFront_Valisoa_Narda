@@ -1,0 +1,21 @@
+<div style="width: 70%;margin: 0 auto;padding: 5%;">
+    <mat-card>
+        <mat-card-title>{{ myAssignment?.titre }}</mat-card-title>
+        <mat-card-content>
+            <div style="width: 60%;margin: 0 auto;">
+                <p><strong>Matière:</strong> {{ myAssignment?.matiere?.titre }}</p>
+                <p><strong>Professeur:</strong> {{ myAssignment?.matiere?.prof?.nom }}</p>
+                <p><strong>Date de rendu:</strong> {{ myAssignment?.dateDeRendu  }}</p>
+                <p><strong>Rendu:</strong> {{ myAssignment?.rendu ? 'Oui' : 'Non' }}</p>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <div style="width: 60%;margin: 0 auto;text-align: center;">
+                
+                <button color="primary"  mat-raised-button color="primary" (click)="rendre( myAssignment?._id ) " >
+                    Rendre
+                </button>
+            </div>
+          </mat-card-actions>
+    </mat-card>
+</div>

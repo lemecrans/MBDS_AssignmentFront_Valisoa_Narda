@@ -1,5 +1,5 @@
 export interface Assignment {
-    id: number;
+    _id: number;
     dateDeRendu: Date;
     titre: string;
     rendu: boolean;

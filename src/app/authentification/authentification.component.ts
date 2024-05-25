@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,8 +25,16 @@ import { MatCardModule } from '@angular/material/card';
 export class AuthentificationComponent {
   pseudo=''
   mdp=''
+  errorMessage!: string;
+
   constructor(private authenticationService: AuthenticationService,
-    private router:Router) {}
+    private router:Router,private route: ActivatedRoute) {}
+  
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.errorMessage = params['message'];
+    });
+  }
 
   onSubmit(event: any) {
     if((this.pseudo == '') || (this.mdp === '')) return;
@@ -40,7 +48,7 @@ export class AuthentificationComponent {
           localStorage.setItem('pseudo', this.pseudo);
           this.router.navigate(['/home']);
         }, error => {
-          this.router.navigate(['/erreur']);
+          this.router.navigate(['/'], { queryParams: { message: "Pseudo ou mots de passe incorrecte, merci de réessayer!" } });
         });
     }
 }

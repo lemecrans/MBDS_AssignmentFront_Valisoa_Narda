@@ -4,13 +4,15 @@ import { Router } from '@angular/router';
 import { Assignment } from '../models/assignmet';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
    ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -27,7 +29,7 @@ export class HomeComponent {
     .subscribe((reponse: Assignment[]) => {
       this.myAssignments = reponse;
     }, error => {
-      this.router.navigate(['/erreur']);
+      this.router.navigate(['/erreur'], { queryParams: { message: "Une erreur s'est survenue, merci de réessayer ultérieurement!" } });
     });
   }
   onSelect(assignment: Assignment): void {

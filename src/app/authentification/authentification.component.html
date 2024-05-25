@@ -1,15 +1,20 @@
+<body class="body">
 <mat-card class="form">
   <form (submit)="onSubmit($event);">
   
     <mat-card-header>
-      <h1 style="text-align: center;">Connexion</h1>
-    </mat-card-header> 
+      <h1 >Connexion</h1>
+    </mat-card-header>
+    <mat-card-header>
+      <p style="color: red;">{{ errorMessage }}</p>
+    </mat-card-header>
+    <p>Merci de vous connecter pour accéder à votre espace étudiant.</p>
     <mat-card-content>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Pseudo</mat-label>
         <input matInput placeholder="Pseudo" required [(ngModel)]="pseudo" name="pseudo"/>
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Mots de passe</mat-label>
         <input matInput placeholder="Mot de passe" required [(ngModel)]="mdp" name="mdp" type="password" />
       </mat-form-field>
@@ -22,3 +27,4 @@
 
 </form>
 </mat-card>
+</body>

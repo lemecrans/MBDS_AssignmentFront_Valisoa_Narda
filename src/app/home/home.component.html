@@ -1,37 +1,40 @@
-<div style="width: 70%;margin: 0 auto;text-align: center;">
-  <h1>Liste de mes assignments</h1>
-  <mat-table [dataSource]="myAssignments" class="mat-elevation-z8">
+<body class="body">
+  <mat-card class="form">
 
-    <!-- Entête du Tableau -->
-    <ng-container matColumnDef="titre">
-      <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
-      <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
-    </ng-container>
+    <h1>Liste de mes assignments</h1>
+    <mat-table [dataSource]="myAssignments" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="matiere">
-      <mat-header-cell *matHeaderCellDef> Matière </mat-header-cell>
-      <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.titre }} </mat-cell>
-    </ng-container>
+      <!-- Entête du Tableau -->
+      <ng-container matColumnDef="titre">
+        <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+        <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="auteur">
-      <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
-      <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.prof.nom }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="matiere">
+        <mat-header-cell *matHeaderCellDef> Matière </mat-header-cell>
+        <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.titre }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="dateDeRendu">
-      <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
-      <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="auteur">
+        <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
+        <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.prof.nom }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="rendu">
-      <mat-header-cell *matHeaderCellDef> Rendu </mat-header-cell>
-      <mat-cell *matCellDef="let assignment"> {{ assignment.rendu ? 'Oui' : 'Non' }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="dateDeRendu">
+        <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
+        <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
+      </ng-container>
 
-    <!-- Ligne de Définition -->
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
+      <ng-container matColumnDef="rendu">
+        <mat-header-cell *matHeaderCellDef> Rendu </mat-header-cell>
+        <mat-cell *matCellDef="let assignment"> {{ assignment.rendu ? 'Oui' : 'Non' }} </mat-cell>
+      </ng-container>
 
-  </mat-table>
-</div>
+      <!-- Ligne de Définition -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
 
+    </mat-table>
+
+  </mat-card>
+</body>

@@ -19,15 +19,19 @@ export class AssignementDetailComponent {
   constructor(private route: ActivatedRoute, private assignmentService: AssignmentService,private router:Router) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')?? '';
-    this.assignmentService.getOne(id).subscribe(
-      res => {
-        this.myAssignment = res;
-      },
-      error => {
-        console.error('Erreur lors de la récupération de l\'assignment:', error);
-      }
-    );
+    if(localStorage.getItem('pseudo') && localStorage.getItem('pseudo')!="" ){
+      const id = this.route.snapshot.paramMap.get('id')?? '';
+      this.assignmentService.getOne(id).subscribe(
+        res => {
+          this.myAssignment = res;
+        },
+        error => {
+          console.error('Erreur lors de la récupération de l\'assignment:', error);
+        }
+      );
+    }else{
+      this.router.navigate(['']);
+    }
   }
   rendre(id:number):void{
     this.assignmentService.rendre(id).subscribe((reponse) => {

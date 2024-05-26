@@ -1,0 +1,26 @@
+<body class="body">
+    <mat-card class="form">
+    <mat-card-title>Créer un Assignment</mat-card-title>
+    <form (submit)="onSubmit($event);">
+        <mat-card-content>
+            <mat-form-field appearance="outline">
+                <mat-label>Titre</mat-label>
+                <input matInput placeholder="Titre" required [(ngModel)]="assignment.titre" name="Titre"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Matière</mat-label>
+                <mat-select required [(ngModel)]="assignment.matiere" name="matiere">
+                  <mat-option *ngFor="let mat of lista" [value]="mat">{{ mat.titre }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Remarques</mat-label>
+                <input matInput placeholder="Remarques" required [(ngModel)]="assignment.remarques" name="remarques"/>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Créer</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
+</body>

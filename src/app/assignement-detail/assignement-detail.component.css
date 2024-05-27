@@ -7,11 +7,12 @@
   .form {
     display: flex;
     flex-direction: column;
-    max-width: 60%;
-    min-height: 40%;
-    margin: 20px auto;
-    border: 5px solid white;
+    text-align: center;
+    width: 95%;
+    height: 140%;
+    margin: 10px auto;
     padding: 3%;
-    border-radius: 1%;
-    min-height: 90%; 
+  }
+  .mine {
+    flex: 1 1 auto;
   }

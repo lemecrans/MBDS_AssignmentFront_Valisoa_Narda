@@ -1,79 +1,131 @@
 <body class="body">
   <mat-card class="form">
-
-    <div style="width: 60%; float: left;margin-left: 40%;">
-      <h1>Liste de mes assignments</h1>
-      <mat-table [dataSource]="myAssignments" class="mat-elevation-z8" >
-
-        <!-- Entête du Tableau -->
-        <ng-container matColumnDef="titre">
-          <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
-        </ng-container>
-  
-        <ng-container matColumnDef="matiere">
-          <mat-header-cell *matHeaderCellDef> Matière </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.titre }} </mat-cell>
-        </ng-container>
-  
-        <ng-container matColumnDef="auteur">
-          <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.prof.nom }} </mat-cell>
-        </ng-container>
-  
-        <ng-container matColumnDef="dateDeRendu">
-          <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
-        </ng-container>
-  
-        <ng-container matColumnDef="rendu">
-          <mat-header-cell *matHeaderCellDef> Rendu </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.rendu ? 'Oui' : 'Non' }} </mat-cell>
-        </ng-container>
-  
-        <!-- Ligne de Définition -->
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
-  
-      </mat-table>
-    </div>
-    <div style="width: 39%; float: right;margin-right: 59%;">
-      <h1>Non rendu</h1>
-      <mat-table [dataSource]="nonrendu" class="mat-elevation-z8" >
-
-        <!-- Entête du Tableau -->
-        <ng-container matColumnDef="titre">
-          <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
-        </ng-container>
-  
-        <ng-container matColumnDef="matiere">
-          <mat-header-cell *matHeaderCellDef> Matière </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.titre }} </mat-cell>
-        </ng-container>
-  
-        <ng-container matColumnDef="auteur">
-          <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.prof.nom }} </mat-cell>
-        </ng-container>
-  
-        <ng-container matColumnDef="dateDeRendu">
-          <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
-        </ng-container>
-  
-        <ng-container matColumnDef="rendu">
-          <mat-header-cell *matHeaderCellDef> Rendu </mat-header-cell>
-          <mat-cell *matCellDef="let assignment"> {{ assignment.rendu ? 'Oui' : 'Non' }} </mat-cell>
-        </ng-container>
-  
-        <!-- Ligne de Définition -->
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
-  
-      </mat-table>
-    </div>
+    <h1>Tableau de bord</h1>
+    <mat-toolbar style="background-color:#f44b3e">
+      <mat-toolbar-row>
+        <span>Menu</span>
+        <span class="mine"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="ajout()">Ajout</button>
+          <button mat-menu-item (click)="logout()">Deconnexion</button>
+        </mat-menu>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-grid-list cols="10"  style="align-items: block;height: 100%;">
+      <mat-grid-tile colspan='4' style="align-items: normal;height: 100%;">
+        <mat-card class="chop2">
+          <mat-card class="sec">
+            <h1>Avancement</h1>
+            <mat-card class="little1">
+              <mat-card-title>
+                {{ myAssignments.length }}
+              </mat-card-title> 
+                Assignment
+            </mat-card>
+            <mat-card class="little2">
+              <mat-card-title>
+                {{ nonrendu.length }}
+              </mat-card-title> 
+              Non Rendu
+            </mat-card>
+            <mat-card class="little3">
+              <mat-card-title>
+                {{ urgent.length }}
+              </mat-card-title> 
+              Urgent
+            </mat-card>
+          </mat-card>
+        
+          <mat-card class="sec2">
+          <h1>Urgent</h1>
+          <mat-table [dataSource]="urgent" class="mat-elevation-z8" >
+            <ng-container matColumnDef="titre">
+              <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="matiere">
+              <mat-header-cell *matHeaderCellDef> Matière </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.titre }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="dateDeRendu">
+              <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
+            </ng-container>
+      
+            <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns2;" (click)="onSelect(row)"></mat-row>
+          </mat-table>
+          
+        </mat-card>
+        <mat-card class="sec2">
+            <h1>Non Rendu</h1>
+          <mat-table [dataSource]="nonrendu" class="mat-elevation-z8" >
+            <ng-container matColumnDef="titre">
+              <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="matiere">
+              <mat-header-cell *matHeaderCellDef> Matière </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.titre }} </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="dateDeRendu">
+              <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
+            </ng-container>
+      
+            <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns2;" (click)="onSelect(row)"></mat-row>
+      
+          </mat-table>
+        </mat-card>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan='6' style="align-items: block;height: 100%;">
+        <mat-card class="chop">
+          <h1>Liste de mes assignments</h1>
+          <mat-table [dataSource]="myAssignments" class="mytable" >
     
+            <!-- Entête du Tableau -->
+            <ng-container matColumnDef="titre">
+              <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="matiere">
+              <mat-header-cell *matHeaderCellDef> Matière </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.titre }} </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="auteur">
+              <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.prof.nom }} </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="dateDeRendu">
+              <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="rendu">
+              <mat-header-cell *matHeaderCellDef> Rendu </mat-header-cell>
+              <mat-cell *matCellDef="let assignment"> {{ assignment.rendu ? 'Oui' : 'Non' }} </mat-cell>
+            </ng-container>
+      
+            <!-- Ligne de Définition -->
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
+      
+          </mat-table>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+      
 
   </mat-card>
 </body>

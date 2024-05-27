@@ -23,7 +23,13 @@ export class AssignmentService {
     const Mypseudo = localStorage.getItem('pseudo');
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     const body = { pseudo: Mypseudo }; 
-    return this.http.post<any>(this.uri + '/etu/assignemnt/nonrendu', body, { headers: headers });
+    return this.http.post<Assignment[]>(this.uri + '/etu/assignemnt/nonrendu', body, { headers: headers });
+  }
+  getUrgent() {
+    const Mypseudo = localStorage.getItem('pseudo');
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const body = { pseudo: Mypseudo }; 
+    return this.http.post<Assignment[]>(this.uri + '/etu/assignment/alert/deadline', body, { headers: headers });
   }
   getOne(id:string): Observable<Assignment>{
     const Mypseudo = localStorage.getItem('pseudo');

@@ -4,12 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentService } from '../services/assignment.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-assignement-detail',
   standalone: true,
   imports: [ MatCardModule,
-    MatButtonModule,],
+    MatButtonModule,
+    MatToolbarModule,],
   templateUrl: './assignement-detail.component.html',
   styleUrl: './assignement-detail.component.css'
 })
@@ -40,6 +42,13 @@ export class AssignementDetailComponent {
     }, error => {
       this.router.navigate(['/erreur']);
     });
+  }
+  home():void{
+    this.router.navigate(['/home']);
+  }
+  logout():void{
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 
 }

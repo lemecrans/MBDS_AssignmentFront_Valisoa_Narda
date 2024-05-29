@@ -1,11 +1,11 @@
 <body class="body">
     <mat-card class="form">
         <h1>Assignment Details</h1>
-        <mat-toolbar style="background-color: rgb(134, 91, 38);">
+        <mat-toolbar style="background-color: #f44b3e;">
             <mat-toolbar-row>
               <span>Menu</span>
               <span class="mine"></span>
-              <button mat-raised-button (click)="home()">Tableau de bord</button>
+              <button mat-raised-button (click)="home()" style="margin: 5px;">Tableau de bord</button>
               <button  mat-raised-button (click)="logout()">Deconnexion</button>
             </mat-toolbar-row>
         </mat-toolbar>
@@ -22,7 +22,7 @@
         <mat-card-actions>
             <div style="width: 60%;margin: 0 auto;text-align: center;">
                 
-                <button   mat-raised-button color="primary" (click)="rendre( myAssignment!._id ) " >
+                <button   mat-raised-button color="warn" (click)="rendre( myAssignment!._id ) " >
                     Rendre
                 </button>
             </div>

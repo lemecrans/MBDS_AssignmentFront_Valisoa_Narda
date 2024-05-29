@@ -6,7 +6,7 @@ import { Assignment } from '../models/assignmet';
   providedIn: 'root'
 })
 export class AjoutService {
-  uri = 'http://localhost:8010/api/etu';
+  uri = 'https://mbds-assignment-ws-valisoa-narda.onrender.com/api/etu';
   constructor(private http:HttpClient) { }
 
   add(assignement :Assignment) {

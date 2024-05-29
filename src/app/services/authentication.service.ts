@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthenticationService {
 
-  uri = 'http://localhost:8010/api/etu';
+  uri = 'https://mbds-assignment-ws-valisoa-narda.onrender.com/api/etu';
   constructor(private http:HttpClient) { }
 
   log(pseudo:string, mdp:string) {

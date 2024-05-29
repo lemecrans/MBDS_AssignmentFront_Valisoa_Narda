@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class AssignmentService {
 
-  uri = 'http://localhost:8010/api';
+  uri = 'https://mbds-assignment-ws-valisoa-narda.onrender.com/api';
   constructor(private http:HttpClient) { }
 
   getAll() {

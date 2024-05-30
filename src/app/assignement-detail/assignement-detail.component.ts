@@ -5,25 +5,38 @@ import { AssignmentService } from '../services/assignment.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-assignement-detail',
   standalone: true,
-  imports: [ MatCardModule,
+  imports: [ 
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
     MatButtonModule,
-    MatToolbarModule,],
+    MatToolbarModule,
+    CommonModule],
   templateUrl: './assignement-detail.component.html',
   styleUrl: './assignement-detail.component.css'
 })
 export class AssignementDetailComponent {
-  
+  role=localStorage.getItem('role');
+  note="";
+  rem="";
+  temp_id="";
   myAssignment: Assignment | undefined ;
   constructor(private route: ActivatedRoute, private assignmentService: AssignmentService,private router:Router) {}
 
   ngOnInit(): void {
     if(localStorage.getItem('pseudo') && localStorage.getItem('pseudo')!="" ){
       const id = this.route.snapshot.paramMap.get('id')?? '';
-      this.assignmentService.getOne(id).subscribe(
+      this.temp_id = this.route.snapshot.paramMap.get('id_etu')?? '';
+      this.assignmentService.getOne(id,this.temp_id).subscribe(
         res => {
           this.myAssignment = res;
         },
@@ -50,5 +63,12 @@ export class AssignementDetailComponent {
     localStorage.clear();
     this.router.navigate(['']);
   }
-
+  Noter(id:number):void{
+    this.assignmentService.noter(id, this.note,this.rem,this.temp_id).subscribe((reponse) => {
+      console.log(reponse);
+      this.router.navigate(['/dash']);
+    }, error => {
+      this.router.navigate(['/erreur'], { queryParams: { message: "Une erreur s'est survenue, merci de réessayer ultérieurement!" } });
+    });
+  }
 }

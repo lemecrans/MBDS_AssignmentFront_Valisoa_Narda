@@ -38,7 +38,7 @@ export class HomeComponent {
   
 
   ngOnInit() {
-    if(localStorage.getItem('pseudo') && localStorage.getItem('pseudo')!="" ){
+    if(localStorage.getItem('pseudo') && localStorage.getItem('pseudo')!="" &&  localStorage.getItem('role')=='ETU'){
       this.assi_serv.getAll()
         .subscribe((reponse: Assignment[]) => {
           this.myAssignments = reponse;
@@ -64,7 +64,7 @@ export class HomeComponent {
     }
   }
   onSelect(assignment: Assignment): void {
-    this.router.navigate(['/assignment-detail', assignment._id]);
+    this.router.navigate(['/assignment-detail', assignment._id,'']);
   }
   ajout():void{
     this.router.navigate(['/ajout']);

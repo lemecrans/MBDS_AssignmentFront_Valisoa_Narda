@@ -19,13 +19,29 @@
                 <p><strong>Rendu:</strong> {{ myAssignment?.rendu ? 'Oui' : 'Non' }}</p>
             </div>
         </mat-card-content>
-        <mat-card-actions>
+        <mat-card-actions *ngIf="role==='ETU'">
             <div style="width: 60%;margin: 0 auto;text-align: center;">
                 
                 <button   mat-raised-button color="warn" (click)="rendre( myAssignment!._id ) " >
                     Rendre
                 </button>
             </div>
-          </mat-card-actions>
+        </mat-card-actions>
+        <mat-card-actions *ngIf="role==='Prof'" style="border: 2px solid #f44b3e; width: 50%;margin: 0px auto;">
+            <div style="width: 50%;margin: 0 auto;text-align: center;">
+                <p style="display: block;">Action</p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Note</mat-label>
+                    <input matInput placeholder="Note/20" required [(ngModel)]="note" name="note" type="number" min="0" max="20"/>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Remarque(s)</mat-label>
+                    <input matInput placeholder="Remarque(s)" required [(ngModel)]="rem" name="rem"/>
+                </mat-form-field>
+                <button   mat-raised-button color="warn" (click)="Noter( myAssignment!._id) " >
+                    Noter
+                </button>
+            </div>
+        </mat-card-actions>
     </mat-card>
 </body>

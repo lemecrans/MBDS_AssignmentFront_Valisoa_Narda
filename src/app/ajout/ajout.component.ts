@@ -54,7 +54,7 @@ export class AjoutComponent {
   lista: Matiere[] = [];
 
   ngOnInit(): void {
-    if(localStorage.getItem('pseudo') && localStorage.getItem('pseudo')!="" ){
+    if(localStorage.getItem('pseudo') && localStorage.getItem('pseudo')!="" &&  localStorage.getItem('role')=='ETU'){
       this.assi_serv.getAllMatiere().subscribe((reponse: Matiere[]) => {
         this.lista = reponse;
         console.log(reponse)

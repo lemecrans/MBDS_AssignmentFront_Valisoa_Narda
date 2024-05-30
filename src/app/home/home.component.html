@@ -91,7 +91,6 @@
           <h1>Liste de mes assignments</h1>
           <mat-table [dataSource]="myAssignments" class="mytable" >
     
-            <!-- Entête du Tableau -->
             <ng-container matColumnDef="titre">
               <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
               <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
@@ -117,7 +116,6 @@
               <mat-cell *matCellDef="let assignment"> {{ assignment.rendu ? 'Oui' : 'Non' }} </mat-cell>
             </ng-container>
       
-            <!-- Ligne de Définition -->
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
       

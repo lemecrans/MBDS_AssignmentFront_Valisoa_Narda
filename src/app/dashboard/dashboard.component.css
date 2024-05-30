@@ -1,0 +1,86 @@
+mat-header-cell, mat-cell {
+    padding: 8px;
+  }
+  
+  mat-row {
+    cursor: pointer;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 95%;
+    height: 155%;
+    margin: 10px auto;
+    padding: 3%;
+  }
+  .mine {
+    flex: 1 1 auto;
+  }
+  .little1{
+    width: 100px;
+    float: left;
+    margin: 5px;
+    margin-left: 9%;
+    background-color: rgb(120, 168, 92);
+  }
+  .little2{
+    width: 100px;
+    margin: 5px;
+    margin-left: 9%;
+    float: left;
+    background-color: coral;
+  }
+  .little3{
+    width: 100px;
+    float: left;
+    margin: 5px;
+    margin-left: 9%;
+    background-color: orangered;
+  }
+  .qi{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    padding: 0;
+    background-color: #bb291e
+  }
+  .sec{
+    height: 160px;
+    margin: 5px;
+    display: inline;
+    border: 2px solid lightgray;
+  }
+  .sec2{
+    min-height: 240px;
+    margin: 5px;
+    border: 2px solid lightgray;
+  }
+  .chop2{
+    min-height: 50%;
+    padding: 1%;
+    align-items: block;
+    width: 100%;
+    border: 5px solid #f44b3e;
+  
+  }
+  .chop{
+    text-align: center;
+    padding: 1%;
+    height: 80%;
+    align-items: block;
+    width: 100%;
+    border: 5px solid #f44b3e;
+  
+  }
+  .mytable{
+    overflow-y: auto;
+  }
+  body{
+    background-image: url(../../assets/back.jpg);
+    margin: -2%;
+    padding: 2%;
+  }
+  

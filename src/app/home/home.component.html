@@ -86,40 +86,25 @@
         </mat-card>
         </mat-card>
       </mat-grid-tile>
+
       <mat-grid-tile colspan='6' style="align-items: block;height: 100%;">
         <mat-card class="chop">
           <h1>Liste de mes assignments</h1>
-          <mat-table [dataSource]="myAssignments" class="mytable" >
-    
-            <ng-container matColumnDef="titre">
-              <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
-              <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
-            </ng-container>
-      
-            <ng-container matColumnDef="matiere">
-              <mat-header-cell *matHeaderCellDef> Matière </mat-header-cell>
-              <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.titre }} </mat-cell>
-            </ng-container>
-      
-            <ng-container matColumnDef="auteur">
-              <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
-              <mat-cell *matCellDef="let assignment"> {{ assignment.matiere.prof.nom }} </mat-cell>
-            </ng-container>
-      
-            <ng-container matColumnDef="dateDeRendu">
-              <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
-              <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
-            </ng-container>
-      
-            <ng-container matColumnDef="rendu">
-              <mat-header-cell *matHeaderCellDef> Rendu </mat-header-cell>
-              <mat-cell *matCellDef="let assignment"> {{ assignment.rendu ? 'Oui' : 'Non' }} </mat-cell>
-            </ng-container>
-      
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
-      
-          </mat-table>
+          <mat-card *ngFor="let assignment of myAssignments" (click)="onSelect(assignment)" style="margin: 5px;padding: 5px; border: 1px solid lightgray;">
+            <mat-card-title>
+              <mat-grid-list cols="10"  style="align-items: block;height: 20px;">
+                <mat-grid-tile colspan='6' style="align-items: normal;height: 20px;">
+                  {{ assignment.titre }}
+                </mat-grid-tile>
+                <mat-grid-tile colspan='4' style="align-items: normal;height: 20px;">
+                  <img src="../../assets/{{ assignment.matiere.titre }}.PNG" width="50px" height="45px" style="float: left;"> 
+                </mat-grid-tile>
+              </mat-grid-list>
+            </mat-card-title>
+            <mat-card-content style="text-align: right;">
+              {{ assignment.matiere.titre }} | {{ assignment.matiere.prof.nom }} | {{ assignment.dateDeRendu | date:'mediumDate' }} | {{ assignment.rendu ? 'Oui' : 'Non' }}
+            </mat-card-content>
+          </mat-card>
         </mat-card>
       </mat-grid-tile>
     </mat-grid-list>

@@ -1,7 +1,15 @@
 <body class="body">
     <mat-card class="form">
-    <mat-card-title>Créer un Assignment</mat-card-title>
-    <form (submit)="onSubmit($event);">
+    <mat-card-title><h2>Créer un Assignment</h2></mat-card-title>
+    <mat-toolbar style="background-color: #f44b3e;">
+        <mat-toolbar-row>
+          <span>Menu</span>
+          <span class="mine"></span>
+          <button mat-raised-button (click)="home()" style="margin: 5px;">Tableau de bord</button>
+          <button  mat-raised-button (click)="logout()">Deconnexion</button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <form (submit)="onSubmit($event);" style="width: 70%;margin: 0px auto;">
         <mat-card-content>
             <mat-form-field appearance="outline">
                 <mat-label>Titre</mat-label>
@@ -19,7 +27,7 @@
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Créer</button>
+            <button mat-raised-button color="warn" type="submit">Créer</button>
         </mat-card-actions>
     </form>
 </mat-card>

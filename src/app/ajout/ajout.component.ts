@@ -14,6 +14,7 @@ import { AssignmentService } from '../services/assignment.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-ajout',
@@ -29,7 +30,8 @@ import { CommonModule } from '@angular/common';
     MatNativeDateModule,
     MatSelectModule,
     MatOptionModule,
-    CommonModule
+    CommonModule,
+    MatToolbarModule
   ],
   templateUrl: './ajout.component.html',
   styleUrl: './ajout.component.css'
@@ -78,6 +80,12 @@ export class AjoutComponent {
         this.router.navigate(['ajout'], { queryParams: { message: "Une erreur est survenue, Merci de réessayer!" } });
       });
     }
-    
+  }
+  home():void{
+    this.router.navigate(['/home']);
+  }
+  logout():void{
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }

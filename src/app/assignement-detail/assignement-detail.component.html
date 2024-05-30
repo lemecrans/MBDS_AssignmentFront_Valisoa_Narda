@@ -1,6 +1,6 @@
 <body class="body">
     <mat-card class="form">
-        <h1>Assignment Details</h1>
+        <h2>Assignment Details</h2>
         <mat-toolbar style="background-color: #f44b3e;">
             <mat-toolbar-row>
               <span>Menu</span>
@@ -9,39 +9,51 @@
               <button  mat-raised-button (click)="logout()">Deconnexion</button>
             </mat-toolbar-row>
         </mat-toolbar>
-        <mat-card-title>
-            <h2>{{ myAssignment?.titre }}</h2></mat-card-title>
-        <mat-card-content>
-            <div style="width: 60%;margin: 0 auto;">
-                <p><strong>Matière:</strong> {{ myAssignment?.matiere?.titre }}</p>
-                <p><strong>Professeur:</strong> {{ myAssignment?.matiere?.prof?.nom }}</p>
-                <p><strong>Date de rendu:</strong> {{ myAssignment?.dateDeRendu  }}</p>
-                <p><strong>Rendu:</strong> {{ myAssignment?.rendu ? 'Oui' : 'Non' }}</p>
-            </div>
-        </mat-card-content>
-        <mat-card-actions *ngIf="role==='ETU'">
-            <div style="width: 60%;margin: 0 auto;text-align: center;">
-                
-                <button   mat-raised-button color="warn" (click)="rendre( myAssignment!._id ) " >
-                    Rendre
-                </button>
-            </div>
-        </mat-card-actions>
-        <mat-card-actions *ngIf="role==='Prof'" style="border: 2px solid #f44b3e; width: 50%;margin: 0px auto;">
-            <div style="width: 50%;margin: 0 auto;text-align: center;">
-                <p style="display: block;">Action</p>
-                <mat-form-field appearance="outline">
-                    <mat-label>Note</mat-label>
-                    <input matInput placeholder="Note/20" required [(ngModel)]="note" name="note" type="number" min="0" max="20"/>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Remarque(s)</mat-label>
-                    <input matInput placeholder="Remarque(s)" required [(ngModel)]="rem" name="rem"/>
-                </mat-form-field>
-                <button   mat-raised-button color="warn" (click)="Noter( myAssignment!._id) " >
-                    Noter
-                </button>
-            </div>
-        </mat-card-actions>
+
+        <mat-card style="border: 1px solid lightgray;width: 80%; margin: 0px auto;margin-top: 5px;padding: 10px;">
+            <mat-card-title>
+              <mat-grid-list cols="10"  style="align-items: block;height: 20px;">
+                <mat-grid-tile colspan='6' style="align-items: normal;height: 40px;">
+                    {{ myAssignment?.titre }}
+                  </mat-grid-tile>
+                  <mat-grid-tile colspan='4' style="align-items: normal;height: 40px;">
+                    <img src="../../assets/{{ myAssignment?.matiere?.titre }}.PNG" width="100px" height="85px" style="float: left;"> 
+                  </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-title>
+            <mat-card-content>
+                <div style="width: 60%;margin: 0 auto;">
+                    <p><strong>Matière:</strong> {{ myAssignment?.matiere?.titre }}</p>
+                    <p><strong>Professeur:</strong> {{ myAssignment?.matiere?.prof?.nom }}</p>
+                    <p><strong>Date de rendu:</strong> {{ myAssignment?.dateDeRendu  }}</p>
+                    <p><strong>Rendu:</strong> {{ myAssignment?.rendu ? 'Oui' : 'Non' }}</p>
+                </div>
+            </mat-card-content>
+            <mat-card-actions *ngIf="role==='ETU'">
+                <div style="width: 60%;margin: 0 auto;text-align: center;">
+                    
+                    <button   mat-raised-button color="warn" (click)="rendre( myAssignment!._id ) " >
+                        Rendre
+                    </button>
+                </div>
+            </mat-card-actions>
+            <mat-card-actions *ngIf="role==='Prof'" style="border: 2px solid #f44b3e; width: 50%;margin: 0px auto;">
+                <div style="width: 50%;margin: 0 auto;text-align: center;">
+                    <p style="display: block;">Action</p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Note</mat-label>
+                        <input matInput placeholder="Note/20" required [(ngModel)]="note" name="note" type="number" min="0" max="20"/>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Remarque(s)</mat-label>
+                        <input matInput placeholder="Remarque(s)" required [(ngModel)]="rem" name="rem"/>
+                    </mat-form-field>
+                    <button   mat-raised-button color="warn" (click)="Noter( myAssignment!._id) " >
+                        Noter
+                    </button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+        
     </mat-card>
 </body>

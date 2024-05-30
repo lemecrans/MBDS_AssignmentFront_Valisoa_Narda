@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-assignement-detail',
@@ -20,7 +21,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
-    CommonModule],
+    CommonModule,
+    MatGridListModule],
   templateUrl: './assignement-detail.component.html',
   styleUrl: './assignement-detail.component.css'
 })

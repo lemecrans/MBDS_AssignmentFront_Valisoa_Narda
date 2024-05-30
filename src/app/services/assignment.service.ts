@@ -45,6 +45,7 @@ export class AssignmentService {
     if(localStorage.getItem('role')=='Prof'){
       body = { studentId: id_etu, assiId : id };
     }else{
+      
       body = { studentId: Mypseudo, assiId : id };
     }
     console.log(body);

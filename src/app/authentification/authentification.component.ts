@@ -9,6 +9,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import {
+  MatSnackBar,
+  MatSnackBarAction,
+  MatSnackBarActions,
+  MatSnackBarConfig,
+  MatSnackBarLabel,
+  MatSnackBarRef,
+} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-authentification',
@@ -33,7 +42,7 @@ export class AuthentificationComponent {
   face=1;
 
   constructor(private authenticationService: AuthenticationService,
-    private router:Router,private route: ActivatedRoute) {}
+    private router:Router,private route: ActivatedRoute , private _snackBar: MatSnackBar) {}
   
   ngOnInit(): void {
     this.face=1;
@@ -42,7 +51,17 @@ export class AuthentificationComponent {
       this.errorMessage = params['message'];
     });
   }
+ /* openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }*/
+  openSnackBar(message: string, action: string, position: { vertical: 'top' | 'bottom', horizontal: 'start' | 'center' | 'end' }) {
+    let config = new MatSnackBarConfig();
+    config.duration = 5000;  // durée  en millisecondes
+    config.verticalPosition = position.vertical;
+    config.horizontalPosition = position.horizontal;
 
+    this._snackBar.open(message, action, config);
+  }
   onSubmitStudent(event: any) {
     if((this.pseudo == '') || (this.mdp === '')) return;
   
@@ -56,6 +75,8 @@ export class AuthentificationComponent {
           localStorage.setItem('role', "ETU");
           this.router.navigate(['/home']);
         }, error => {
+          let message = "Pseudo ou mots de passe incorrecte, merci de réessayer!" ;
+          this.openSnackBar(message, "ok", { vertical: 'top', horizontal: 'center' });
           this.router.navigate(['/'], { queryParams: { message: "Pseudo ou mots de passe incorrecte, merci de réessayer!" } });
         });
     }
@@ -71,6 +92,8 @@ export class AuthentificationComponent {
             localStorage.setItem('role', "Prof");
             this.router.navigate(['/dash']);
           }, error => {
+            let message = "Pseudo ou mots de passe incorrecte, merci de réessayer!" ;
+            this.openSnackBar(message, "ok", { vertical: 'top', horizontal: 'center' });
             this.router.navigate(['/'], { queryParams: { message: "Pseudo ou mots de passe incorrecte, merci de réessayer!" } });
           });
       }

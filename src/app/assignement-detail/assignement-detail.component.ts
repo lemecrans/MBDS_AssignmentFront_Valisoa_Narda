@@ -53,7 +53,7 @@ export class AssignementDetailComponent {
       console.log(reponse);
       this.router.navigate(['/home']);
     }, error => {
-      this.router.navigate(['/erreur']);
+      this.router.navigate(['/erreur'], { queryParams: { message: "Une erreur s'est survenue, merci de réessayer ultérieurement!" } });
     });
   }
   home():void{

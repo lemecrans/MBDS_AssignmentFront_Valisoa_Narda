@@ -45,7 +45,7 @@ export class AssignmentService {
     if(localStorage.getItem('role')=='Prof'){
       body = { studentId: id_etu, assiId : id };
     }else{
-      
+
       body = { studentId: Mypseudo, assiId : id };
     }
     console.log(body);
@@ -55,12 +55,12 @@ export class AssignmentService {
     const Mypseudo = localStorage.getItem('ID');
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     const body = { studentId: Mypseudo, assignmentId : id };
-    return this.http.post<any>(this.uri + '/etu/assignment/rendre', body, { headers: headers });
+    return this.http.put<any>(this.uri + '/etu/assignment/rendre', body, { headers: headers });
   }
   noter(id:number,noty:String,rem:String, etu:string): Observable<Assignment>{
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     const body = { studentId: etu, idAssignment: id, note: noty, remarques: rem };
-    return this.http.put<any>(`${this.uri}/prof/assignement/noter`, body, { headers: headers });
+    return this.http.put<any>(this.uri+'/prof/assignement/noter', body, { headers: headers });
   }
   getAllMatiere(){
     return this.http.get<{ message: string, data: Matiere[] }>(this.uri + '/matiere/liste')

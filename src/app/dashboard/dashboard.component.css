@@ -18,36 +18,7 @@ mat-header-cell, mat-cell {
   .mine {
     flex: 1 1 auto;
   }
-  .little1{
-    width: 100px;
-    float: left;
-    margin: 5px;
-    margin-left: 9%;
-    background-color: rgb(120, 168, 92);
-  }
-  .little2{
-    width: 100px;
-    margin: 5px;
-    margin-left: 9%;
-    float: left;
-    background-color: coral;
-  }
-  .little3{
-    width: 100px;
-    float: left;
-    margin: 5px;
-    margin-left: 9%;
-    background-color: orangered;
-  }
-  .qi{
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    padding: 0;
-    background-color: #bb291e
-  }
+  
   .sec{
     height: 160px;
     margin: 5px;
@@ -60,18 +31,18 @@ mat-header-cell, mat-cell {
     border: 2px solid lightgray;
   }
   .chop2{
-    min-height: 50%;
     padding: 1%;
     align-items: block;
     width: 100%;
     border: 5px solid #f44b3e;
     overflow-y: auto;
+    height: 800px;
   
   }
   .chop{
     text-align: center;
     padding: 1%;
-    height: 80%;
+    height: 800px;
     align-items: block;
     width: 100%;
     border: 5px solid #f44b3e;
@@ -82,7 +53,6 @@ mat-header-cell, mat-cell {
     overflow-y: auto;
   }
   body{
-    background-image: url(../../assets/back.jpg);
     margin: -2%;
     padding: 2%;
   }

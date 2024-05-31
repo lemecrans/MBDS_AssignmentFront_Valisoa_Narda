@@ -13,56 +13,30 @@
           </mat-menu>
         </mat-toolbar-row>
       </mat-toolbar>
-      <!--mat-grid-list cols="10"  style="align-items: block;height: 100%;">
-        <mat-grid-tile colspan='3' style="align-items: normal;height: 100%;">
-          <mat-card class="chop2">
-              <h1>Statistique</h1>
-              <mat-card class="little1">
-                <mat-card-title>
-                  100
-                </mat-card-title> 
-                  En attente
-              </mat-card>
-              <mat-card class="little2">
-                <mat-card-title>
-                  20
-                </mat-card-title> 
-                Non Rendu
-              </mat-card>
-              <mat-card class="little3">
-                <mat-card-title>
-                  6
-                </mat-card-title> 
-                ma liste
-              </mat-card>
-          </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile colspan='7' style="align-items: block;height: 100%;"-->
-          <mat-card class="chop" style="margin-top: 5px;">
-            <h1>Assignments en attente</h1>
-            <mat-table [dataSource]="data" class="mytable" >
-              <ng-container matColumnDef="titre">
-                <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
-                <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
-              </ng-container>
-        
-              <ng-container matColumnDef="dateDeRendu">
-                <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
-                <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
-              </ng-container>
-        
-              <ng-container matColumnDef="Etudiant">
-                <mat-header-cell *matHeaderCellDef> Etudiant </mat-header-cell>
-                <mat-cell *matCellDef="let assignment"> {{ assignment.nom_etu }} </mat-cell>
-              </ng-container>
+      
+      <mat-card class="chop" style="margin-top: 5px;">
+        <h1>Assignments en attente</h1>
+        <mat-table [dataSource]="data" class="mytable" >
+          <ng-container matColumnDef="titre">
+            <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+            <mat-cell *matCellDef="let assignment"> {{ assignment.titre }} </mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="dateDeRendu">
+            <mat-header-cell *matHeaderCellDef> Date de Rendu </mat-header-cell>
+            <mat-cell *matCellDef="let assignment"> {{ assignment.dateDeRendu | date:'mediumDate' }} </mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="Etudiant">
+            <mat-header-cell *matHeaderCellDef> Etudiant </mat-header-cell>
+            <mat-cell *matCellDef="let assignment"> {{ assignment.nom_etu }} </mat-cell>
+          </ng-container>
 
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
-        
-            </mat-table>
-          </mat-card>
-        <!--/mat-grid-tile>
-      </mat-grid-list-->
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
+    
+        </mat-table>
+      </mat-card>
         
   
     </mat-card>

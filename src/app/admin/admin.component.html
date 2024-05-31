@@ -1,0 +1,112 @@
+<body class="body">
+    <div *ngIf="face === 1">
+      <mat-card class="form">
+        <form (submit)="onSubmitStudent($event);">
+        
+          <mat-card-header>
+            <h1 >Connexion Admin</h1>
+          </mat-card-header>
+          <mat-card-header>
+            <p style="color: red;">{{ errorMessage }}</p>
+          </mat-card-header>
+          <p>Merci de vous connecter pour accéder à l'espace admin.</p>
+          <mat-card-content>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" required [(ngModel)]="pseudo" name="Email"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Mots de passe</mat-label>
+              <input matInput placeholder="Mot de passe" required [(ngModel)]="mdp" name="mdp" type="password" />
+            </mat-form-field>
+          </mat-card-content>    
+          <mat-card-actions>
+            <button color="warn"  mat-raised-button >
+              Connexion
+            </button>
+          </mat-card-actions>
+      
+        </form>
+      </mat-card>
+    </div>
+    <div *ngIf="face === 2">
+        <mat-card class="form2" style="min-height: 600px;">
+            <h1>Tableau de bord</h1>
+            <mat-toolbar style="background-color:#f44b3e">
+              <mat-toolbar-row>
+                <span>Menu</span>
+                <span class="mine"></span>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>menu</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="ajout()">Ajout</button>
+                  <button mat-menu-item (click)="logout()">Deconnexion</button>
+                </mat-menu>
+              </mat-toolbar-row>
+            </mat-toolbar>
+            <mat-grid-list cols="10"  style="align-items: block;height: 150%;">
+              <mat-grid-tile colspan='5' style="align-items: block;min-height: 300px;">
+                <mat-card class="chop">
+                    <h1>Liste des Profs</h1>
+                    <mat-table [dataSource]="listePro" class="mytable" >
+            
+                      <!-- Entête du Tableau -->
+                      <ng-container matColumnDef="ID">
+                        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+                        <mat-cell *matCellDef="let prof"> {{ prof._id }} </mat-cell>
+                      </ng-container>
+                
+                      <ng-container matColumnDef="Nom">
+                        <mat-header-cell *matHeaderCellDef> Pseudo </mat-header-cell>
+                        <mat-cell *matCellDef="let prof"> {{ prof.nom }} </mat-cell>
+                      </ng-container>
+                
+                      <ng-container matColumnDef="Mail">
+                        <mat-header-cell *matHeaderCellDef> Mail </mat-header-cell>
+                        <mat-cell *matCellDef="let prof"> {{ prof.email}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="Photo" style="text-align: right;">
+                        <mat-header-cell *matHeaderCellDef> Photo </mat-header-cell>
+                        <mat-cell *matCellDef="let prof"> <img src="../../assets/{{ prof.photo }}" width="60px" height="45px" style="float: right;"> </mat-cell>
+                      </ng-container>
+                
+                      <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+                      <mat-row *matRowDef="let row; columns: displayedColumns2;" (click)="onSelect2(row)"></mat-row>
+                
+                    </mat-table>
+                  </mat-card>
+              </mat-grid-tile>
+        
+              <mat-grid-tile colspan='5' style="align-items: block;min-height: 300px;">
+                <mat-card class="chop">
+                  <h1>Liste des Etudiants</h1>
+                  <mat-table [dataSource]="listeStu" class="mytable" >
+            
+                    <!-- Entête du Tableau -->
+                    <ng-container matColumnDef="ID">
+                      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+                      <mat-cell *matCellDef="let stu"> {{ stu._id }} </mat-cell>
+                    </ng-container>
+              
+                    <ng-container matColumnDef="Pseudo">
+                      <mat-header-cell *matHeaderCellDef> Pseudo </mat-header-cell>
+                      <mat-cell *matCellDef="let stu"> {{ stu.pseudo }} </mat-cell>
+                    </ng-container>
+              
+                    <ng-container matColumnDef="Nombre d'assignments">
+                      <mat-header-cell *matHeaderCellDef> Nombre d'assignments </mat-header-cell>
+                      <mat-cell *matCellDef="let stu"> {{ stu.assignments.length}} </mat-cell>
+                    </ng-container>
+              
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
+              
+                  </mat-table>
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+            
+      </mat-card>
+    </div>
+</body>

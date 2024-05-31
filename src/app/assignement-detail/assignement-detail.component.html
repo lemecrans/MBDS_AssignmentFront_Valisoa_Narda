@@ -9,6 +9,7 @@
               <button  mat-raised-button (click)="logout()">Deconnexion</button>
             </mat-toolbar-row>
         </mat-toolbar>
+        <p style="color: red;">{{errorMessage}}</p>
 
         <mat-card style="border: 1px solid lightgray;width: 80%; margin: 0px auto;margin-top: 5px;padding: 10px;">
             <mat-card-title>
@@ -22,17 +23,18 @@
                 </mat-grid-list>
             </mat-card-title>
             <mat-card-content>
-                <div style="width: 60%;margin: 0 auto;">
-                    <p><strong>Matière:</strong> {{ myAssignment?.matiere?.titre }}</p>
-                    <p><strong>Professeur:</strong> {{ myAssignment?.matiere?.prof?.nom }}</p>
-                    <p><strong>Date de rendu:</strong> {{ myAssignment?.dateDeRendu  }}</p>
-                    <p><strong>Rendu:</strong> {{ myAssignment?.rendu ? 'Oui' : 'Non' }}</p>
+                <div style="width: 60%;margin: 0 auto;text-align: justify;">
+                    <p><strong>Matière : </strong> {{ myAssignment?.matiere?.titre }}</p>
+                    <p><strong>Professeur : </strong> {{ myAssignment?.matiere?.prof?.nom }}</p>
+                    <p><strong>Date de rendu : </strong> {{ myAssignment?.dateDeRendu  }}</p>
+                    <p><strong>Rendu : </strong> {{ myAssignment?.rendu ? 'Oui' : 'Non' }}</p>
+                    <p><strong>Remarque : </strong> {{ myAssignment?.remarques }}</p>
+                    <p><strong>Note : </strong> {{ myAssignment?.note }}</p>
                 </div>
             </mat-card-content>
             <mat-card-actions *ngIf="role==='ETU'">
                 <div style="width: 60%;margin: 0 auto;text-align: center;">
-                    
-                    <button   mat-raised-button color="warn" (click)="rendre( myAssignment!._id ) " >
+                    <button   mat-raised-button color="warn" (click)="rendre( myAssignment!._id ) " *ngIf="myAssignment?.rendu===false"  >
                         Rendre
                     </button>
                 </div>

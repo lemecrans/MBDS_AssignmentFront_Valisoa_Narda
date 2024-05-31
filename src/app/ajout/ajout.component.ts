@@ -72,7 +72,7 @@ export class AjoutComponent {
 
     
   onSubmit(event: any): void {
-    if (this.assignment.titre!="") {
+    if (this.assignment.titre!="" && this.assignment.dateDeRendu && this.assignment.matiere.titre ) {
       this.add_serv.add(this.assignment)
       .subscribe((reponse) => {
         this.router.navigate(['home'], { queryParams: { message: "Assignment Ajouter avec succés!" } });

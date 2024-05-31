@@ -1,0 +1,18 @@
+.body{
+    background-image: url(../../assets/back.jpg);
+    margin: -2%;
+    padding: 2%;
+    padding-left: 5%;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 95%;
+    min-height: 600px;
+    margin: 10px auto;
+    padding: 3%;
+  }
+  .mine {
+    flex: 1 1 auto;
+  }

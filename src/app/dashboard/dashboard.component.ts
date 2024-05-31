@@ -39,10 +39,10 @@ export class DashboardComponent {
       this.assi_serv.getEnAttente()
         .subscribe((reponse: ResponseItem[]) => {
             for (let item of reponse) {
-                let student = item.student;
-                for (let assi of student.assignments) {
-                    this.data=this.data.concat(new AffichageAssignment(assi._id, assi.dateDeRendu, assi.titre,assi.note,assi.remarques,student.pseudo,student.id ))
-                }
+              let student = item.student;
+              for (let assi of student.assignments) {
+                  this.data=this.data.concat(new AffichageAssignment(assi._id, assi.dateDeRendu, assi.titre,assi.note,assi.remarques,student.pseudo,student._id ))
+              }
             }
             console.log(this.data);
         }, error => {

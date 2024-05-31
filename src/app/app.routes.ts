@@ -5,6 +5,8 @@ import { AssignementDetailComponent } from './assignement-detail/assignement-det
 import { ErreurComponent } from './erreur/erreur.component';
 import { AjoutComponent } from './ajout/ajout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminComponent } from './admin/admin.component';
+import { EditionComponent } from './edition/edition.component';
 
 
 export const routes: Routes = [
@@ -14,5 +16,7 @@ export const routes: Routes = [
     { path: 'ajout', component: AjoutComponent },
     { path: 'assignment-detail/:id/:id_etu', component: AssignementDetailComponent },
     { path: 'dash', component: DashboardComponent },
+    { path: 'admin', component: AdminComponent },
+    { path: 'edit/:id/:face', component: EditionComponent },
 
 ];

@@ -29,7 +29,7 @@ export class AssignmentService {
   getUrgent() {
     const Mypseudo = localStorage.getItem('pseudo');
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const body = { pseudo: Mypseudo }; 
+    const body = { pseudo: Mypseudo,nbJ:1 }; 
     return this.http.post<Assignment[]>(this.uri + '/etu/assignment/alert/deadline', body, { headers: headers });
   }
   getEnAttente() {
@@ -48,7 +48,6 @@ export class AssignmentService {
 
       body = { studentId: Mypseudo, assiId : id };
     }
-    console.log(body);
     return this.http.post<any>(this.uri + '/etu/assignment/id', body, { headers: headers });
   }
   rendre(id:number): Observable<Assignment>{

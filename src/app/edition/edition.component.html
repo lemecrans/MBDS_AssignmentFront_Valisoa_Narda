@@ -1,0 +1,51 @@
+<body class="body" >
+    <mat-card class="form" style="text-align: center;">
+        <mat-card-title><h2>Edition</h2></mat-card-title>
+        <mat-toolbar style="background-color: #f44b3e;">
+            <mat-toolbar-row>
+            <span>Menu</span>
+            <span class="mine"></span>
+            <button mat-raised-button (click)="home()" style="margin: 5px;">Tableau de bord</button>
+            <button  mat-raised-button (click)="logout()">Deconnexion</button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <form (submit)="onSubmit($event);" style="width: 70%;margin: 0px auto;text-align: center;" *ngIf="face==='1' && myStu">
+            <mat-card-content>
+                <p>ID : {{ myStu._id}}</p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Pseudo</mat-label>
+                    <input matInput placeholder="Pseudo" required [(ngModel)]="myStu.pseudo" name="pseudo"/>
+                </mat-form-field>
+                
+            </mat-card-content>
+            <mat-card-actions style="float: left;margin-left: 100px;">
+                <button mat-raised-button color="primary" type="submit" (click)="action='1'; onSubmit($event)">Modifier</button>
+            </mat-card-actions>
+            <mat-card-actions style="float: right;margin-right: 100px;">
+                <button mat-raised-button color="warn" type="submit" (click)="action='2'; onSubmit($event)">Supprimer</button>
+            </mat-card-actions>
+        </form>
+        <form (submit)="onSubmit2($event);" style="width: 50%;margin: 0px auto;text-align: center;" *ngIf="face==='2' && myPro">
+            <mat-card-content>
+                <img src="../../assets/{{ myPro.photo }}" width="100px" height="85px" >
+                <p>ID : {{ myPro._id}}</p>
+                <mat-form-field appearance="outline" style="margin: 10px;">
+                    <mat-label>Nom</mat-label>
+                    <input matInput placeholder="Nom" required [(ngModel)]="myPro.nom" name="nom"/>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="margin: 10px;">
+                    <mat-label>email</mat-label>
+                    <input matInput placeholder="Email" required [(ngModel)]="myPro.email" name="email"/>
+                </mat-form-field>
+                
+            </mat-card-content>
+            <mat-card-actions style="float: left;margin-left: 100px;">
+                <button mat-raised-button color="primary" type="submit" (click)="action='1'; onSubmit($event)">Modifier</button>
+            </mat-card-actions>
+            <mat-card-actions style="float: right;margin-right: 100px;">
+                <button mat-raised-button color="warn" type="submit" (click)="action='2'; onSubmit($event)">Supprimer</button>
+            </mat-card-actions>
+        </form>
+        
+    </mat-card>
+</body>

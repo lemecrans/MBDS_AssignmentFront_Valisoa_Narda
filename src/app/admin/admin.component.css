@@ -1,0 +1,81 @@
+.body{
+    background-image: url(../../assets/back.jpg);
+    margin: -2%;
+    padding: 2%;
+    padding-left: 5%;
+  }
+  .form {
+    display: flex;
+    float: left;
+    flex-direction: column;
+    text-align: center;
+    max-width: 30%;
+    margin: 20px auto;
+    border: 5px solid white;
+    padding: 3%;
+    border-radius: 10%;
+    min-height: 90%; 
+  }
+  
+  .chop{
+    text-align: center;
+    padding: 1%;
+    height: 80%;
+    align-items: block;
+    width: 100%;
+    border: 5px solid #f44b3e;
+    overflow-y: auto;
+  
+  }
+  .user {
+    display: table-cell;
+    font-size: 14px;
+    float : right;
+    margin: 20px;
+    min-width: 120px;
+  }
+  
+  .form mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .user2 {
+    display: table-cell;
+    font-size: 14px;
+    float : left;
+    margin: 20px;
+    min-width: 120px;
+  }
+  .mytable{
+    overflow-y: auto;
+    width: 100%;
+  }
+  .form2 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 95%;
+    height: 100%;
+    margin: 10px auto;
+    padding: 3%;
+  }
+  
+  .form mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  mat-card-header, mat-card-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .mine {
+    flex: 1 1 auto;
+  }
+  mat-card-actions button {
+    width: 40%;
+    margin: 0 auto;
+  }
+  

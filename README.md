@@ -31,3 +31,8 @@ Fonctionnalité:
         -   Modification étudiant
         -   Suppression Etudiant
 
+Contrôle:
+    -   Authentification Token et Pseudo en Localstorage
+    -   Valeur Note
+    -   Gestion autorsisation
+

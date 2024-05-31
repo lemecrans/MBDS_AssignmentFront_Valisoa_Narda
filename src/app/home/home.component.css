@@ -61,7 +61,7 @@ mat-row {
   overflow-y: auto;
 }
 .chop2{
-  height: 800px;
+  height: 700px;
   padding: 1%;
   align-items: block;
   width: 100%;
@@ -71,7 +71,7 @@ mat-row {
 .chop{
   text-align: center;
   padding: 1%;
-  height: 800px;
+  height: 700px;
   align-items: block;
   width: 100%;
   border: 5px solid #f44b3e;

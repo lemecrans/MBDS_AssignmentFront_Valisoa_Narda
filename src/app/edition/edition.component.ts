@@ -44,7 +44,7 @@ export class EditionComponent {
   constructor(private route: ActivatedRoute, private admi : AdminService,private router:Router) {}
 
   ngOnInit(): void {
-    //if(localStorage.getItem('pseudo') && localStorage.getItem('pseudo')!="" ){
+    if(localStorage.getItem('pseudo') && localStorage.getItem('pseudo')!="" ){
       const id = this.route.snapshot.paramMap.get('id')?? '';
       this.face = this.route.snapshot.paramMap.get('face')?? '';
       if(this.face=='1'){
@@ -67,9 +67,9 @@ export class EditionComponent {
         );
       }
       
-    //}else{
-      //this.router.navigate(['']);
-    //}
+    }else{
+      this.router.navigate(['']);
+    }
   }
   onSubmit(event: any): void {
     if (this.action === '1' && this.myStu) {

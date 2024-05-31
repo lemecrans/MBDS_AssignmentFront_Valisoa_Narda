@@ -32,6 +32,8 @@ export class AssignementDetailComponent {
   rem="";
   temp_id="";
   myAssignment: Assignment | undefined ;
+  errorMessage!: string;
+
   constructor(private route: ActivatedRoute, private assignmentService: AssignmentService,private router:Router) {}
 
   ngOnInit(): void {

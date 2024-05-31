@@ -51,7 +51,11 @@ export class AdminComponent {
     private router:Router,private route: ActivatedRoute) {}
   
   ngOnInit(): void {
-    this.face=1;
+    if(localStorage.getItem('pseudo')){  
+      this.face=2;
+    }else{
+      this.face=1;
+    }
   }
   onSubmitStudent(event: any) {
     if((this.pseudo == '') || (this.mdp === '')) return;
